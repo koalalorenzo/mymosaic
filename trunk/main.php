@@ -1,5 +1,7 @@
-<?php include_once "managegrid.php" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//IT" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php 
+include($_SERVER['DOCUMENT_ROOT']."/lib/managegrid.php");
+?>
+TML 1.0 Transitional//IT" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="it-IT" xml:lang="it-IT" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -9,7 +11,7 @@ $(document).ready(function(){
     $("#salva").click(function(event){
         var griglia = $("#griglia").html();
         alert("la seguente griglia verrà salvata: <br/>" + griglia);
-        $.post("managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)});
+        $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)});
 
     });
 
@@ -31,10 +33,9 @@ Il profilo di NavBack
 <div id="container">
 <div id="griglia">
 <?php 
-//    $griglia = caricagriglia(); NON FUNZIONANO, STO USANDO INCLUDE
-//    echo $griglia;
-//    echo $nomefile;
-    include "grigliabk.txt";  //STO INCLUDENDO UN BACKUP, AL MOMENTO GRIGLIA.TXT SI DEGENERA OGNI VOLTA CHE VIENE SALVATA
+$griglia = caricagriglia();
+echo $griglia;
+echo $nomefile;
 ?>
 </div>
 </div>
