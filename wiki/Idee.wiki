@@ -9,10 +9,11 @@ In una cartella "file" le librerie di terze parti e i file di default (Il tema d
 In una cartella Plugins tutti i file .php delle classi dei plugin
 cartella themes i temi.
 
-Così, ad esempio: il file css di default sarà in /files/defaulttheme/style.css
-jquery in /files/js/
-le librerie aggiuntive php in /files/php/
-managegrid.php a radice, in quanto è qualcosa che andiamo a richiamare direttamente
-libcore.php (che, personalmente, rinominerei in basefunctions) in /files/php/ anche (poiché è qualcosa che richiamiamo solo attraverso altri file php)
+Così, ad esempio: 
+*il file css di default sarà in /files/defaulttheme/style.css
+*jquery in /files/js/
+*le librerie aggiuntive php in /files/php/
+*managegrid.php a radice, in quanto è qualcosa che andiamo a richiamare direttamente
+*libcore.php (che, personalmente, rinominerei in basefunctions) in /files/php/ anche (poiché è qualcosa che richiamiamo solo attraverso altri file php)
 
 Che ne pensate? Scrivete sotto la vostra
