@@ -1,0 +1,56 @@
+body {margin:0;}
+#serviceBar {
+text-align:right;
+width:99%; 
+padding:5px;
+border-bottom:1px solid black;
+font-size:8pt;
+font-family:sans-serif;
+background-image:url(../logo/mmos.png);
+background-repeat: no-repeat;
+background-attachment:fixed;
+}
+#footer {
+text-align:center;
+width:99%; 
+padding:5px;
+border-top:1px solid black;
+font-size:8pt;
+font-family:sans-serif;
+}
+#header {
+width:99%; 
+padding:5px;
+padding-top:20px;
+border-bottom:1px solid black;
+font-size:20pt;
+font-family:sans-serif;
+height:100px;
+background-image:url(../defaultTheme/backHead.jpg);
+background-repeat: no-repeat;
+background-attachment:fixed;
+background-position: top right;
+}
+.headDescription {
+font-size:9pt;
+}
+#container {
+width:99%; 
+padding:5px;
+padding-top:5px;
+font-size:10pt;
+font-family:sans-serif;
+}
+#plugin{
+border: 1.5px solid gray;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px; 
+padding:2px;
+font-size:9pt;
+margin-bottom:5px;
+}
+b.title{
+font-size:15px;
+display:block;
+font-variant:small-caps;
+}

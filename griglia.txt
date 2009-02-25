@@ -1,0 +1,37 @@
+
+<table width=\"100%\">
+<tbody><tr>
+<td valign=\"\\&quot;top\\&quot;\" width=\"33%\">
+<div id=\"\\&quot;plugin\\&quot;\">
+<b class=\"\\&quot;title\\&quot;\"><img src=\"%5C%22../defaultTheme/icons/script.png%5C%22\"> Blog</b>
+<i>Soddisfazioni</i><br>
+<small>
+E oggi finalmente la pagella :D
+<br>
+Sono molto contento!!!</small><br><br>
+<i>Implicazione logica</i><br>
+<small>
+Ruminavo sullâ€™idea di intitolare un post â€œImplicazione logicaâ€, dovevo ormai farlo.
+<br>
+In questo periodo mi sento piÃ¹ felice, ma pare che qualcosâ€™altro cali.
+<br>
+Eâ€™ forse lâ€™implicazione logica del mio passato?</small>
+</div>
+</td>
+<td valign=\"\\&quot;top\\&quot;\" width=\"33%\">
+<div id=\"\\&quot;plugin\\&quot;\">
+<b class=\"\\&quot;title\\&quot;\"><img src=\"%5C%22../defaultTheme/icons/link.png%5C%22\"> Bookmark</b>
+<a href=\"%5C%22http://it.wikiquote.org/wiki/Jim_Morrison%5C%22\">http://it.wikiquote.org/wiki/Jim_Morrison</a> <small>Tantissime citazioni di Jim Morrison, ottime a mio avviso.</small>
+</div>
+</td>
+
+<td valign=\"\\&quot;top\\&quot;\" width=\"33%\">
+<div id=\"\\&quot;plugin\\&quot;\">
+<b class=\"\\&quot;title\\&quot;\"><img src=\"%5C%22../defaultTheme/icons/camera.png%5C%22\"> Foto</b>
+</div>
+<div id=\"\\&quot;plugin\\&quot;\">
+<b class=\"\\&quot;title\\&quot;\"><img src=\"%5C%22../defaultTheme/icons/note.png%5C%22\"> Pensieri</b>
+</div>
+</td>
+</tr>
+</tbody></table>
