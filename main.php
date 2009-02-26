@@ -1,16 +1,17 @@
 <?php 
-include($_SERVER['DOCUMENT_ROOT']."/lib/managegrid.php");
+include /*$_SERVER['DOCUMENT_ROOT'].*/"managegrid.php" ;
+$themename = "default";
 ?>
-TML 1.0 Transitional//IT" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//IT" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="it-IT" xml:lang="it-IT" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="lib/js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
     $("#salva").click(function(event){
         var griglia = $("#griglia").html();
-        alert("la seguente griglia verrà salvata: <br/>" + griglia);
+        alert("la seguente griglia verrà salvata: \n" + griglia);
         $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)});
 
     });
@@ -19,7 +20,7 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
-@import url("css/default.css");
+@import url(<?php echo "themes/".$themename."/css/style.css" ?>);
 </style>
 </head>
 <body>
@@ -35,7 +36,6 @@ Il profilo di NavBack
 <?php 
 $griglia = caricagriglia();
 echo $griglia;
-echo $nomefile;
 ?>
 </div>
 </div>
