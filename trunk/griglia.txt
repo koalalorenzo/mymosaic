@@ -2,7 +2,7 @@
 <tr>
 <td valign="top" width="33%">
 <div id="plugin">
-<b class="title"><img src="../img/icons/script.png" /> Blog</b>
+<b class="title"><img src="/themes/default/img/icons/script.png" /> Blog</b>
 <i>Soddisfazioni</i><br />
 <small>
 E oggi finalmente la pagella :D
@@ -10,25 +10,25 @@ E oggi finalmente la pagella :D
 Sono molto contento!!!</small><br /><br />
 <i>Implicazione logica</i><br />
 <small>
-Ruminavo sull�idea di intitolare un post �Implicazione logica�, dovevo ormai farlo.
+Ruminavo sull?idea di intitolare un post ?Implicazione logica?, dovevo ormai farlo.
 <br />
-In questo periodo mi sento pi� felice, ma pare che qualcos�altro cali.
+In questo periodo mi sento pi? felice, ma pare che qualcos?altro cali.
 <br />
-E� forse l�implicazione logica del mio passato?</small>
+E? forse l?implicazione logica del mio passato?</small>
 </div>
 </td>
 <td valign="top"  width="33%">
 <div id="plugin">
-<b class="title"><img src="../img/icons/link.png" /> Bookmark</b>
+<b class="title"><img src="/themes/default/img/icons/link.png" /> Bookmark</b>
 <a href="http://it.wikiquote.org/wiki/Jim_Morrison">http://it.wikiquote.org/wiki/Jim_Morrison</a> <small>Tantissime citazioni di Jim Morrison, ottime a mio avviso.</small>
 </div>
 </td>
 <td valign="top"  width="33%">
 <div id="plugin">
-<b class="title"><img src="../img/icons/camera.png" /> Foto</b>
+<b class="title"><img src="/themes/default/img/icons/camera.png" /> Foto</b>
 </div>
 <div id="plugin">
-<b class="title"><img src="../img/icons/note.png" /> Pensieri</b>
+<b class="title"><img src="/themes/default/img/icons/note.png" /> Pensieri</b>
 </div>
 </td>
 </tr>
