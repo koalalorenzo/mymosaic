@@ -19,6 +19,6 @@ function caricagriglia($filegriglia="griglia.txt"){
 };
 
 if ($_POST["dati"]){
-    salvagriglia($_POST["dati"]);
+    salvagriglia (html_entity_decode($_POST["dati"]));
 };
 ?>
