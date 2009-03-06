@@ -8,12 +8,11 @@ $themename = "default";
 <script type="text/javascript" src="lib/js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-
     $("#salva").click(function(event){
-        var griglia = $("#griglia").html();
-        alert("la seguente griglia verrà salvata: \n" + griglia);
-        $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)});
-
+        var griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
+		griglia.find(".plugin[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
+        alert("la seguente griglia verrà salvata: \n" + griglia.html()); //dico che la griglia verrà salvata
+        // $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
     });
 
 });
@@ -35,6 +34,11 @@ Il profilo di NavBack
 <div id="griglia">
 <?php 
 $griglia = caricagriglia();
+// CODICE PER RICOSTRUIRE GRIGLIA DA INFORMAZIONI DEI DIV INCOMPLETO
+//$xml = simplexml_load_string($griglia);
+//$widgets = $xml->xpath("//div[@class='plugin']");
+//print_r($widgets);
+//foreach ($widgets as $widget){echo $widget->asXML();};
 echo $griglia;
 ?>
 </div>

@@ -1,7 +1,7 @@
 <table width="100%">
 <tr>
 <td valign="top" width="33%">
-<div id="plugin">
+<div class="plugin" action="static">
 <b class="title"><img src="/themes/default/img/icons/script.png" /> Blog</b>
 <i>Soddisfazioni</i><br />
 <small>
@@ -18,16 +18,16 @@ E? forse l?implicazione logica del mio passato?</small>
 </div>
 </td>
 <td valign="top"  width="33%">
-<div id="plugin">
+<div class="plugin">
 <b class="title"><img src="/themes/default/img/icons/link.png" /> Bookmark</b>
 <a href="http://it.wikiquote.org/wiki/Jim_Morrison">http://it.wikiquote.org/wiki/Jim_Morrison</a> <small>Tantissime citazioni di Jim Morrison, ottime a mio avviso.</small>
 </div>
 </td>
 <td valign="top"  width="33%">
-<div id="plugin">
+<div class="plugin">
 <b class="title"><img src="/themes/default/img/icons/camera.png" /> Foto</b>
 </div>
-<div id="plugin">
+<div class="plugin">
 <b class="title"><img src="/themes/default/img/icons/note.png" /> Pensieri</b>
 </div>
 </td>
