@@ -10,7 +10,7 @@ $themename = "default";
 $(document).ready(function(){
     $("#salva").click(function(event){
         var griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
-		griglia.find(".plugin[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
+		griglia.find(".widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
         alert("la seguente griglia verrà salvata: \n" + griglia.html()); //dico che la griglia verrà salvata
         // $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
     });
@@ -32,14 +32,28 @@ Il profilo di NavBack
 </div>
 <div id="container">
 <div id="griglia">
-<?php 
+<?php
+function __autoload($class_name) {
+    require_once "./widgets/" . $class_name . '.php';
+};
+
 $griglia = caricagriglia();
-// CODICE PER RICOSTRUIRE GRIGLIA DA INFORMAZIONI DEI DIV INCOMPLETO
-//$xml = simplexml_load_string($griglia);
-//$widgets = $xml->xpath("//div[@class='plugin']");
-//print_r($widgets);
-//foreach ($widgets as $widget){echo $widget->asXML();};
-echo $griglia;
+
+function stampawidgets($griglia){
+    $xml = simplexml_load_string($griglia); #Carico il file xml
+    $widgets = $xml->xpath("//div[@class='widget']"); #Prendo tutti i div con class widget
+    foreach ($widgets as $widget){ #Per ogni widget
+        $attributi = $widget->attributes(); #carico gli attributi
+        $nomeclasse = strval($attributi["action"]); #Prendo l'attributo action e lo faccio come stringa
+        if (($nomeclasse != "static")&&($nomeclasse)) { #Controllo che action esista e non sia static
+            $w = new $nomeclasse(); #Istanzio un nuovo oggetto dal nome della classe
+            $ritorno = $w->render(); #Lancio la funzione Render dell'oggetto appena creato
+            $widget->addchild($ritorno); #Aggiungo il ritorno all'html
+        };
+    };
+    return $xml->asXML(); #Stampo l'xml appena creato
+}
+echo stampawidgets($griglia);
 ?>
 </div>
 </div>
