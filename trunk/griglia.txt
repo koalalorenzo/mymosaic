@@ -24,7 +24,7 @@ E? forse l?implicazione logica del mio passato?</small>
 </div>
 </td>
 <td valign="top"  width="33%">
-<div class="widget" action="twitter">
+<div class="widget" action="twitter" numero="5">
 </div>
 <div class="widget">
 <b class="title"><img src="/themes/default/img/icons/note.png" /> Pensieri</b>
