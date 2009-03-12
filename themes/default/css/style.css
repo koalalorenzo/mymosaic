@@ -1,4 +1,4 @@
-body {margin:0;}
+body {margin:0 auto;}
 #serviceBar {
 text-align:right;
 width:99%; 
@@ -19,7 +19,8 @@ font-size:8pt;
 font-family:sans-serif;
 }
 #header {
-width:99%; 
+/*width:99%;*/
+margin:0px;
 padding:5px;
 padding-top:20px;
 border-bottom:1px solid black;
@@ -35,9 +36,12 @@ background-position: top right;
 font-size:9pt;
 }
 #container {
-width:99%; 
-padding:5px;
-padding-top:5px;
+background:white;
+margin: 0 auto;
+
+width:960px;
+/*padding:5px;
+padding-top:5px;*/
 font-size:10pt;
 font-family:sans-serif;
 }
@@ -48,7 +52,28 @@ border: 1.5px solid gray;
 padding:2px;
 font-size:9pt;
 margin-bottom:5px;
+display:inline-block;
 }
+.widget[w="1"]{
+    width:300px;
+}
+.widget[w="2"]{
+    width:610px;
+}
+.col{
+    display:inline-block;
+    margin:2px;
+}
+.colinner{
+        display:inline-block;
+}
+.col[w="1"]{
+    width:310px;
+}
+.col[w="2"]{
+    width:630px;
+}
+
 b.title{
 font-size:15px;
 display:block;

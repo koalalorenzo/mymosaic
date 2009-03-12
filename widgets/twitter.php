@@ -11,7 +11,7 @@ class twitter {
     function render($args){
 $html = <<< CODICE
         <b class="title">Twitter</b>
-        <p> Numero = {$args["numero"]} </p>
+        <p>Questo è generato da php, preso dall'attributo del div <br/> numero = {$args["numero"]} =) </p>
 CODICE;
 
         return $html;
