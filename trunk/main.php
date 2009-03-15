@@ -3,10 +3,11 @@
     $themename = "default";
     #Includo i file
     include "managegrid.php" ;
+	require_once "lib/widget.php";
 
     #Carico la griglia
     function __autoload($class_name) {
-        require_once "./widgets/" . $class_name . '.php';
+        require_once "./widgets/" . $class_name . '/widget.php';
     };
 
     $griglia = caricagriglia();
@@ -22,7 +23,14 @@
 <script type="text/javascript" src="lib/js/jquery-ui-1.7.custom.min.js"></script>
 <script type="text/javascript" src="lib/js/jquery.easywidgets.min.js"></script>
 <!-- JS E CSS per i widget -->
-
+<?php
+foreach($js as $jss){
+    echo "<script type='text/javascript' src='$jss'></script>\n";
+}
+foreach($css as $csss){
+    echo "<link type='text/css' href='$csss' rel='Stylesheet' />\n";
+}
+?>
 <!-- FINE JS E CSS per i widget -->
 <link type="text/css" href="<?php echo "themes/".$themename."/css/style.css" ?>" rel="Stylesheet" />
 <script type="text/javascript">
@@ -94,6 +102,14 @@ $(document).ready(function(){
     $("#showgridpreview").click(function(){
         alert(griglia);
     });
+	
+	<?php 
+	foreach($jsfn as $elem){
+		echo "$elem \n";
+	}
+
+	?>
+
 
 });
 </script>

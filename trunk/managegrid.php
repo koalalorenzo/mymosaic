@@ -14,8 +14,12 @@ function salvagriglia($dati,$filegriglia="griglia.html"){
 };
 
 function stampawidgets($griglia){ #PRIMA O POI BISOGNERA RISCRIVERLO, PER ORA FA DOPPIO LAVORO DI ESCAPE E UNESCAPE
-    //$js = array();
-    //$css = array();
+    global $js;
+    global $css;
+    global $jsfn;
+    $js = array();
+    $css = array();
+    $jsfn = array();
     $xml = simplexml_load_string($griglia); #Carico il file xml
     $widgets = $xml->xpath("//div[@class='ui-widget movable']"); #Prendo tutti i div con class widget
     foreach ($widgets as $widget){ #Per ogni widget
@@ -25,6 +29,10 @@ function stampawidgets($griglia){ #PRIMA O POI BISOGNERA RISCRIVERLO, PER ORA FA
             $w = new $nomeclasse($attributi); #Istanzio un nuovo oggetto dal nome della classe
             $ritorno = $w->render(); #Lancio la funzione Render dell'oggetto appena creato
             $widget->addchild("div",$ritorno); #Aggiungo il ritorno all'html
+            $requirements = $w->requirements();
+            $js = array_merge($requirements["js"], $js);
+            $css = array_merge($requirements["css"], $css);
+			$jsfn = array_merge($requirements["jsfn"], $jsfn);
         };
     };
     return html_entity_decode($xml->asXML()); #Stampo l'xml appena creato
