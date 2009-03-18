@@ -12,18 +12,18 @@ public $jsfunctions;
        $this->argomenti = $arguments;
 
 $this->html = <<<CODICE
-        <h3 class="ui-widget-header">Twitter</h3>
+        <h3 class="ui-widget-header">Ultimi twit di vigliag</h3>
         <div id="twitter"></div>
 CODICE;
 $this->jsfunctions = <<<JS
 		$("#twitter").getTwitter({
 		userName: "vigliag",
 		numTweets: 5,
-		loaderText: "Loading tweets...",
-		slideIn: true,
-		showHeading: true,
-		headingText: "Latest Tweets",
-		showProfileLink: true
+		loaderText: "Caricamento",
+		slideIn: false,
+		showHeading: false,
+		headingText: "Ultimi Twit",
+		showProfileLink: false
 	});
 JS;
 
