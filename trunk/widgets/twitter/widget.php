@@ -12,17 +12,17 @@ public $jsfunctions;
        $this->argomenti = $arguments;
 
 $this->html = <<<CODICE
-        <h3 class="ui-widget-header">Ultimi twit di vigliag</h3>
+        <h3 class="ui-widget-header"><img src="widgets/twitter/icon.png" /> Ultimi tweet di NavBack</h3>
         <div id="twitter"></div>
 CODICE;
 $this->jsfunctions = <<<JS
 		$("#twitter").getTwitter({
-		userName: "vigliag",
+		userName: "NavBack",
 		numTweets: 5,
 		loaderText: "Caricamento",
 		slideIn: false,
 		showHeading: false,
-		headingText: "Ultimi Twit",
+		headingText: "Ultimi Tweet",
 		showProfileLink: false
 	});
 JS;

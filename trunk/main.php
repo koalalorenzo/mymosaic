@@ -17,8 +17,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//IT" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="it-IT" xml:lang="it-IT" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<title>Pagina del Profilo - μMosaic</title>
 <link type="text/css" href="lib/js/jqueryuithemes/start/jquery-ui-1.7.custom.css" rel="Stylesheet" />
 <link type="text/css" href="lib/js/jquery.easywidgets.css" rel="Stylesheet" />
+<link rel="icon" href="themes/default/img/mmos.png" type="image/gif"/>
 <script type="text/javascript" src="lib/js/jquery.js"></script>
 <script type="text/javascript" src="lib/js/jquery-ui-1.7.custom.min.js"></script>
 <script type="text/javascript" src="lib/js/jquery.easywidgets.min.js"></script>
@@ -120,20 +122,18 @@ $(document).ready(function(){
 <body>
 <div id="container">
 <div id="serviceBar">
-    Ciao, NavBack | LogOut | Impostazioni
+    Ciao, NavBack | LogOut | Impostazioni | <a id="salva">Salva modifiche</a>
 </div>
 <div id="header">
     <h1>Pagina del profilo</h1>
     <div class="headDescription">Per cancellare una vita ci vuole un attimo, per cancellare un attimo ci vuole una vita. <b>J. Morrison</b></div>
 </div>
-
 <div id="griglia">
     <?php
     echo $grigliagenerata;
     ?>
 </div>
 <div id="footer">
-    <a id="salva">Salva la griglia!</a>
     &mu;Mosaic - 2009
 </div>
 </div>
