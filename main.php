@@ -19,11 +19,9 @@
 <head>
 <title>Pagina del Profilo - μMosaic</title>
 <link type="text/css" href="lib/js/jqueryuithemes/start/jquery-ui-1.7.custom.css" rel="Stylesheet" />
-<link type="text/css" href="lib/js/jquery.easywidgets.css" rel="Stylesheet" />
 <link rel="icon" href="themes/default/img/mmos.png" type="image/gif"/>
 <script type="text/javascript" src="lib/js/jquery.js"></script>
 <script type="text/javascript" src="lib/js/jquery-ui-1.7.custom.min.js"></script>
-<script type="text/javascript" src="lib/js/jquery.easywidgets.min.js"></script>
 <!-- JS E CSS per i widget -->
 <?php
 foreach($js as $jss){
@@ -38,25 +36,19 @@ foreach($css as $csss){
 <script type="text/javascript">
 $(document).ready(function(){
     <?php if($_SESSION["permission"]=="admin"){?>
+    var griglia;
+    function processagriglia(){
+        griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
+        griglia.find(".ui-widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
+        return griglia;
+    };
     $("#editmode").click(function(){ //attivo i js per la modalita di modifica
-        $(this).text("Chiudi interfaccia di modifica");
-        $(this).attr("id","closeedit"); //cambio l'id in modo da farlo diventare il bottone salva
-        $("#serviceBar").append(" <a id='salva'>Salva le modifiche</a>");
-        $(function(){
-         $.fn.EasyWidgets({
-             selectors : {
-                  // Container of a Widget (into another element that use as place)
-                  // The container can be "div" or "li", for example. In the first case
-                  // use another "div" as place, and a "ul" in the case of "li".
-                  container : 'div',
-                  // Class identifier for a Widget
-                  widget : '.ui-widget',
-                  // Class identifier for a Widget place (parents of Widgets)
-                  places : '.wcol',
-                  // Class identifier for a Widget header (handle)
-                  header : '.ui-widget-header'
-                }
-         });
+        $(this).remove();
+        $("#serviceBar").append("<a id='closeedit'>Chiudi interfaccia di modifica</a> <a id='salva'>Salva le modifiche</a>");
+        $(".wcol").sortable({
+            connectWith:'.wcol',
+            revert: true,
+            receive: function(event, ui) {if (parseInt($(this).attr("w")) < (parseInt($(ui.item).attr("w")))){$(ui.sender).sortable('cancel');};}
         });
          $("#savedialog").dialog({
                 autoOpen: false,
@@ -72,8 +64,8 @@ $(document).ready(function(){
                 }
          });
         $("#salva").click(function(){
-            var griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
-            griglia.find(".widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
+            griglia = processagriglia().html();
+            alert(griglia);
             $("#savedialog").dialog("open");
             //alert("la seguente griglia verrà salvata: \n" + griglia.html()); //dico che la griglia verrà salvata
             //$.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
@@ -83,7 +75,7 @@ $(document).ready(function(){
             location.reload();
         });
 
-        $("#showgridpreview").click(function(){
+        $("#showgridpreview").click(function(griglia){
             alert(griglia);
         });
 });
