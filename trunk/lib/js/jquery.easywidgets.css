@@ -16,6 +16,10 @@
 }
 
 .widget-placeholder {
+  display:inline-block;
+  margin:0;
+  padding:0;
+  vertical-align:text-top;
   border: #000 dashed 1px;
 }
 
