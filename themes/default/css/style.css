@@ -30,7 +30,7 @@ font-family:sans-serif;
 height:100px;
 background-image:url(../img/backHead.jpg);
 background-repeat: no-repeat;
-background-attachment:fixed;
+/*background-attachment:fixed;*/
 background-position: top right;
 }
 #header h1{
