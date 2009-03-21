@@ -9,9 +9,9 @@
     function __autoload($class_name) {
         require_once "./widgets/" . $class_name . '/widget.php';
     };
-
     $griglia = caricagriglia();
     $grigliagenerata = stampawidgets($griglia);
+    session_start();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//IT" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,82 +37,63 @@ foreach($css as $csss){
 <link type="text/css" href="<?php echo "themes/".$themename."/css/style.css" ?>" rel="Stylesheet" />
 <script type="text/javascript">
 $(document).ready(function(){
-    $(function(){
-     $.fn.EasyWidgets({
-         selectors : {
-              // Container of a Widget (into another element that use as place)
-              // The container can be "div" or "li", for example. In the first case
-              // use another "div" as place, and a "ul" in the case of "li".
-              container : 'div',
-
-              // Class identifier for a Widget
-              widget : '.ui-widget',
-
-              // Class identifier for a Widget place (parents of Widgets)
-              places : '.wcol',
-
-              // Class identifier for a Widget header (handle)
-              header : '.ui-widget-header',
-
-              // Class for the Widget header menu
-              widgetMenu : '.widget-menu',
-
-              // Class identifier for Widget editboxes
-              editbox : '.widget-editbox',
-
-              // Class identifier for Widget content
-              content : '.widget-content',
-
-              // Class identifier for editbox close link or button, for example
-              closeEdit : '.widget-close-editbox',
-
-              // Class identifier for a Widget edit link
-              editLink : '.widget-editlink',
-
-              // Class identifier for a Widget close link
-              closeLink : '.widget-closelink',
-
-              // Class identifier for Widgets placehoders
-              placeHolder : 'widget-placeholder',
-
-              // Class identifier for a Widget collapse link
-              collapseLink : '.widget-collapselink'
-            }
-     });
-    });
-     $("#savedialog").dialog({
-            autoOpen: false,
-            modal: true,
-            buttons: {
-                'Salva la griglia': function() {
-                    $(this).dialog('close');
-                    $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)});
-                },
-                Cancel: function() {
-                    $(this).dialog('close');
+    <?php if($_SESSION["permission"]=="admin"){?>
+    $("#editmode").click(function(){ //attivo i js per la modalita di modifica
+        $(this).text("Chiudi interfaccia di modifica");
+        $(this).attr("id","closeedit"); //cambio l'id in modo da farlo diventare il bottone salva
+        $("#serviceBar").append(" <a id='salva'>Salva le modifiche</a>");
+        $(function(){
+         $.fn.EasyWidgets({
+             selectors : {
+                  // Container of a Widget (into another element that use as place)
+                  // The container can be "div" or "li", for example. In the first case
+                  // use another "div" as place, and a "ul" in the case of "li".
+                  container : 'div',
+                  // Class identifier for a Widget
+                  widget : '.ui-widget',
+                  // Class identifier for a Widget place (parents of Widgets)
+                  places : '.wcol',
+                  // Class identifier for a Widget header (handle)
+                  header : '.ui-widget-header'
                 }
-            }
-     });
-    $("#salva").click(function(){
-        var griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
-		griglia.find(".widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
-        $("#savedialog").dialog("open");
-        //alert("la seguente griglia verrà salvata: \n" + griglia.html()); //dico che la griglia verrà salvata
-        //$.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
-    });
+         });
+        });
+         $("#savedialog").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    'Salva la griglia': function() {
+                        $(this).dialog('close');
+                        $.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)});
+                    },
+                    Cancel: function() {
+                        $(this).dialog('close');
+                    }
+                }
+         });
+        $("#salva").click(function(){
+            var griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
+            griglia.find(".widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
+            $("#savedialog").dialog("open");
+            //alert("la seguente griglia verrà salvata: \n" + griglia.html()); //dico che la griglia verrà salvata
+            //$.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
+        });
 
-    $("#showgridpreview").click(function(){
-        alert(griglia);
-    });
-	
-	<?php 
+        $("#closeedit").click(function(){
+            location.reload();
+        });
+
+        $("#showgridpreview").click(function(){
+            alert(griglia);
+        });
+});
+	<?php }; ?>
+	<?php
+    //stampo i js per i singoli widget
 	foreach($jsfn as $elem){
 		echo "$elem \n";
 	}
-
 	?>
-
-
 });
 </script>
 
@@ -122,7 +103,15 @@ $(document).ready(function(){
 <body>
 <div id="container">
 <div id="serviceBar">
-    Ciao, NavBack | LogOut | Impostazioni | <a id="salva">Salva modifiche</a>
+    <?php if($_SESSION["permission"]=="admin"){
+        echo "Ciao, {$_SESSION["username"]} | <a href='logout.php'>LogOut</a> | Impostazioni | <a id='editmode'>Edit-mode</a>";
+    }else{?>
+    <form name="login" action="login.php" method="POST">
+        <input type="text" name="username" value="username" size="10" />
+        <input type="password" name="password" value="" size="15" />
+        <input type="submit" value="login" />
+    </form>
+    <?php };?>
 </div>
 <div id="header">
     <h1>Pagina del profilo</h1>
