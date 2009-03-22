@@ -22,6 +22,7 @@
 <link rel="icon" href="themes/default/img/mmos.png" type="image/gif"/>
 <script type="text/javascript" src="lib/js/jquery.js"></script>
 <script type="text/javascript" src="lib/js/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.jeditable.min.js"></script>
 <!-- JS E CSS per i widget -->
 <?php
 foreach($js as $jss){
@@ -44,6 +45,17 @@ $(document).ready(function(){
     };
     $("#editmode").click(function(){ //attivo i js per la modalita di modifica
         $(this).remove();
+        $(".ui-widget[action=static] .ui-widget-content").editable(function(value){
+            return(value);
+        },
+        {
+            type: "textarea",
+            submit: "salva",
+            cancel: "annulla",
+            tooltip   : 'Clicca per editare'
+
+        });
+        //$(".ui-widget[action=static] .ui-widget-header").append("    <a class='staticedit'>Edit</a>");
         $("#serviceBar").append("<a id='closeedit'>Chiudi interfaccia di modifica</a> <a id='salva'>Salva le modifiche</a>");
         $(".wcol").sortable({
             connectWith:'.wcol',
@@ -78,6 +90,12 @@ $(document).ready(function(){
         $("#showgridpreview").click(function(griglia){
             alert(griglia);
         });
+
+//        $(".staticedit").click(function(){
+//            //alert("prova");
+//
+//            //$(this).parent(".ui-widget").children(".ui-widget-content").editable('prova.php');
+//        });
 });
 	<?php }; ?>
 	<?php
@@ -99,8 +117,8 @@ $(document).ready(function(){
         echo "Ciao, {$_SESSION["username"]} | <a href='logout.php'>LogOut</a> | Impostazioni | <a id='editmode'>Edit-mode</a>";
     }else{?>
     <form name="login" action="login.php" method="POST">
-        <input type="text" name="username" value="username" size="10" />
-        <input type="password" name="password" value="" size="15" />
+        <input type="text" name="username" value="demo" size="10" />
+        <input type="password" name="password" value="password" size="15" />
         <input type="submit" value="login" />
     </form>
     <?php };?>
