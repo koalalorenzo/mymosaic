@@ -1,15 +1,35 @@
 body {margin:0 auto;}
 #serviceBar {
-text-align:right;
-width:99%; 
-padding:5px;
-border-bottom:1px solid #555;
-font-size:8pt;
-font-family:sans-serif;
-background-image:url(../logo/mmos.png);
-background-repeat: no-repeat;
-background-attachment:fixed;
+    text-align:right;
+    width:99%;
+    padding:5px;
+    border-bottom:1px solid #555;
+    font-size:8pt;
+    font-family:sans-serif;
+    color:white;
+    background-color:#343538;
+    /*background-image:url(../img/mmos.png);
+    background-repeat: no-repeat;
+    background-attachment:fixed;*/
 }
+#serviceBar a{color:white; text-decoration:underline; cursor:pointer;}
+#editbar {
+    width:99%;
+    border-top:1px solid #555;
+    border-bottom:1px solid #555;
+    padding:5px;
+    /*height:200px;*/
+    text-align:justify;
+}
+#addmenu, #editwidget, #trash_config {
+    text-align:right;
+    width:305px;
+    display:inline-block;
+    vertical-align:text-top;
+    border-left:2px solid #555;
+    padding:2px;
+}
+
 #footer {
 text-align:center;
 width:99%; 
@@ -55,6 +75,7 @@ font-size:9pt;
 margin-bottom:5px;
 display:inline-block;
 vertical-align:text-top;
+background-color:white;
 }
 .ui-widget[w="1"]{
 width:300px;
@@ -83,6 +104,7 @@ font-size:15px;
 color:white;
 padding:1.5px;
 }
+
 .row{
     border-top:1px solid #555;
 	border-left:1px solid #555;

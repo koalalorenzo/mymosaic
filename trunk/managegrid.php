@@ -12,7 +12,12 @@ function salvagriglia($dati,$filegriglia="griglia.html"){
         return FALSE;
     }
 };
-
+function renderwidget($classname,$attributes){
+    //Funzione che dato il nome del widget e gli attibuti ritorna il codice risultante del widget
+    $w = new $classname($attributes); #Istanzio un nuovo oggetto dal nome della classe
+    $html = $w->render(); #Lancio la funzione Render dell'oggetto appena creato
+    return $html;
+};
 function stampawidgets($griglia){ #PRIMA O POI BISOGNERA RISCRIVERLO, PER ORA FA DOPPIO LAVORO DI ESCAPE E UNESCAPE
     global $js;
     global $css;
