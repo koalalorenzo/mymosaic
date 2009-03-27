@@ -37,6 +37,7 @@ public function jsfunctions(){
 		loaderText: 'Caricamento',
 		slideIn: false,
 		showHeading: false,
+
 		showProfileLink: false
         });
         ";

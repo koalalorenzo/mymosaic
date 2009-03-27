@@ -28,6 +28,8 @@ body {margin:0 auto;}
     vertical-align:text-top;
     border-left:2px solid #555;
     padding:2px;
+    zoom:1;
+    *display:inline;
 }
 
 #footer {
@@ -76,6 +78,8 @@ margin-bottom:5px;
 display:inline-block;
 vertical-align:text-top;
 background-color:white;
+zoom:1;
+*display:inline;
 }
 .ui-widget[w="1"]{
 width:300px;
@@ -83,13 +87,15 @@ padding:3px;
 }
 .ui-widget[w="2"]{
     width:610px;
-padding:3px;
+    padding:3px;
 }
 .wcol{
     display:inline-block;
     vertical-align:text-top;
     margin:2px;
     padding:0;
+    zoom:1;
+    *display:inline;
 }
 .wcol[w="1"]{
     width:305px;
