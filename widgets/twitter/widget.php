@@ -6,42 +6,48 @@
  */
 class twitter extends Widget {
 
-public $html;
-public $jsfunctions;
-    function __construct($arguments) {
-       $this->argomenti = $arguments;
+public $js = array("widgets/twitter/jquery.twitter.js"); #ARRAY INDICANTE I PERCORSI DI TUTTI I FILE JS RICHIESTI DAL WIDGET
+public $css = array("widgets/twitter/jquery.twitter.css"); #ARRAY INDICANTE TUTTI I FILE CSS RICHIESTI DAL WIDGET
+public $rqarg = array('username'=>'username dell\'utente','numtweet'=>"numero di tweet da visualizzare");
 
-$this->html = <<<CODICE
-        <h3 class="ui-widget-header"><img src="widgets/twitter/icon.png" /> Ultimi tweet di NavBack</h3>
-        <div id="twitter"></div>
-CODICE;
-$this->jsfunctions = <<<JS
-		$("#twitter").getTwitter({
-		userName: "NavBack",
+function __construct($arguments) {
+$this->argomenti = $arguments;
+}
+
+public function render(){
+    try{
+    $username=$this->loadarg("username");
+    $html ="
+        <h3 class=\"ui-widget-header\"><img src=\"widgets/twitter/icon.png\" /> Ultimi tweet di {$username}</h3>
+        <div id=\"twitter\"></div>
+        ";
+    return $html;
+    }
+    catch(Exception $exc){
+        return "Errore nei file di configurazione per il Wiget Twitter";
+    }
+}
+public function jsfunctions(){
+    try{
+    $username=$this->loadarg("username");
+    $jsfunctions ="
+		$('#twitter').getTwitter({
+		userName: '{$username}',
 		numTweets: 5,
-		loaderText: "Caricamento",
+		loaderText: 'Caricamento',
 		slideIn: false,
 		showHeading: false,
-		headingText: "Ultimi Tweet",
 		showProfileLink: false
-	});
-JS;
-
+        });
+        ";
+    return $jsfunctions;
+    } catch(Exception $exc){
+        return "";
     }
-
-    public function render(){
-        
-
-        return $this->html;
     }
-	
-	public $js = array("widgets/twitter/jquery.twitter.js"); #ARRAY INDICANTE I PERCORSI DI TUTTI I FILE JS RICHIESTI DAL WIDGET
-    public $css = array("widgets/twitter/jquery.twitter.css"); #ARRAY INDICANTE TUTTI I FILE CSS RICHIESTI DAL WIDGET
-	public $jsfn = array();
-
-    public function requirements(){
-        $this->jsfn = array($this->jsfunctions);
-        return array('js' => $this->js, "css" => $this->css, "jsfn" => $this->jsfn,);
-    }
+public function requirements(){
+        $jsfn = array($this->jsfunctions());
+        return array('js' => $this->js, "css" => $this->css, "jsfn" => $jsfn,);
+        }
 }
 ?>
