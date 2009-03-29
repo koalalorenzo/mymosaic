@@ -31,6 +31,31 @@ body {margin:0 auto;}
     zoom:1;
     *display:inline;
 }
+#addmenu .ui-widget{
+    width:auto;
+    display:inline;
+}
+
+.ui-widget:hover{
+    position:relative;
+}
+.ui-widget .widget_overlay {
+	display:none;
+    }
+.ui-widget:hover .widget_overlay {
+    width:auto;
+    text-align:right;
+    height:20px;
+    display:block;
+    position:relative;
+    z-index:1;
+    left:-1px;
+    margin:0;
+    margin-top:-22px;
+    padding:0px;
+    border:1px solid #900;
+    background-color:#FFEFEF;
+    }
 
 #footer {
 text-align:center;
@@ -69,7 +94,7 @@ width:960px;
 font-size:10pt;
 font-family:sans-serif;
 }
-.ui-widget{
+#griglia .ui-widget{
 margin:2px;
 border: 1px solid #888;
 padding:0;

@@ -1,9 +1,11 @@
 $(document).ready(function(){
     var griglia;
     function processagriglia(){
-        griglia = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
+        grigliaelem = $("#griglia").clone(); //prendo la griglia dall'html e ne faccio una copia in memoria
         griglia.find(".ui-widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
-        return griglia;
+        //griglia.find("div").removeAttr("style");
+        //griglia.find("div .ui-draggable").removeClass("ui-draggable");
+        return grigliaelem;
     };
     $("#editmode").click(function(){ //attivo i js per la modalita di modifica
         $(this).remove();
@@ -39,11 +41,12 @@ $(document).ready(function(){
                 }
          });
         $("#salva").click(function(){
-            griglia = processagriglia().html();
-            alert(griglia);
-            $("#savedialog").dialog("open");
-            //alert("la seguente griglia verrà salvata: \n" + griglia.html()); //dico che la griglia verrà salvata
-            //$.post("./lib/managegrid.php", {"dati": griglia}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
+            griglia = document.getElementById("griglia");
+            griglia.find(".ui-widget[action!=static]").empty(); //svuoto tutti i div con class plugin e senza attributo static
+            var grigliahtml = innerXHTML(griglia);
+            //$("#savedialog").dialog("open");
+            //alert("la seguente griglia verrà salvata: \n" + grigliahtml); //dico che la griglia verrà salvata
+            $.post("managegrid.php", {"dati": grigliahtml}, function(risposta){alert(risposta)}); //Per ora mi fermo qui XD
         });
 
         $("#closeedit").click(function(){
