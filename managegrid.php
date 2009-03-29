@@ -4,7 +4,7 @@ include "lib/libcore.php"; /*($_SERVER['DOCUMENT_ROOT']."lib/libcore.php"); Non 
 # MyMosaic Managegrid             #
 ###################################
 
-function salvagriglia($dati,$filegriglia="griglia.html"){
+function salvagriglia($dati,$filegriglia="./griglia.html"){
     if (write_file($filegriglia,$dati)){
         echo "Modifiche alla griglia salvate correttamente";
         return TRUE;
@@ -49,6 +49,6 @@ function caricagriglia($filegriglia="griglia.html"){
 };
 
 if (@$_POST["dati"]){
-    salvagriglia (html_entity_decode($_POST["dati"]));
+    salvagriglia (html_entity_decode(stripslashes($_POST["dati"])),"griglia.html");
 };
 ?>

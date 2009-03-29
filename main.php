@@ -22,6 +22,7 @@
 <script type="text/javascript" src="lib/js/jquery.js"></script>
 <?php if($_SESSION["permission"] == "admin"){?>
 <script type="text/javascript" src="lib/js/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="lib/js/innerxhtml.js"></script>
 <script type="text/javascript" src="lib/js/jquery.jeditable.min.js"></script>
 <script type="text/javascript" src="lib/js/admin.js"></script>
 <?php }; ?>
@@ -38,16 +39,24 @@ foreach($css as $csss){
 <link type="text/css" href="<?php echo "themes/".$themename."/css/style.css" ?>" rel="Stylesheet" />
 <script type="text/javascript">
 $(document).ready(function(){
-    	$("#trash").droppable({
+    	/*$("#trash").droppable({
 			accept: '.ui-widget',
 			activeClass: 'ui-state-hover',
 			hoverClass: 'ui-state-active',
             tolerance: 'pointer',
-			drop: function(event, ui) {
+			drop: function(event, ui){
                 if(confirm("Sei sicuro di voler eliminare il widget?")){$(ui.draggable).remove();}
-			}
-        }
-		);
+            }
+        });*/
+        $("#addmenu .ui-widget").draggable(
+            { connectToSortable: '.wcol', helper: 'clone'}
+        );
+        $(".ui-widget").prepend("<div class='widget_overlay'><a class='edit_widgets'>Edit</a> <a class='delete_widget'>Delete</a></div>");
+        $(".widget_overlay .delete_widget").click(function(){
+            if(confirm("Sei sicuro di voler eliminare il widget?")){
+                $(this).parents(".ui-widget").remove();
+            }
+        });
         <?php
         //stampo i js per i singoli widget
         foreach($jsfn as $elem){
@@ -68,21 +77,23 @@ $(document).ready(function(){
     ?>
         <div id="editbar" style="display:none;">
         <div id="addmenu">
-        <font size="3"><b>Aggiungi Widget</b></font><br />
-            <img src="widgets/twitter/icon.png"> <b>Twitter</b><br />
-            Visualizza gli ultimi tweet inviati.<br />
-            <img src="widgets/lastfm/icon.png"> <b>Last.fm</b><br />
-            Mostra gli ultimi ascolti su Last.fm.<br />
-            <img src="widgets/googlecalendar/icon.png"> <b>Google Calendar</b><br />
-            Mostra il contenuto di un calendario scelto.<br />
-            <img src="widgets/flickr/icon.png"> <b>Flickr</b><br />
-            Visualizza un elenco con le ultime foto pubblicate su Flickr.<br />
+        <h3>Aggiungi Widget</h3>
+        <ul>
+            <li><div class='ui-widget movable' w='1' action='twitter' numero='5' username='NavBack'><img src="widgets/twitter/icon.png"><b>Twitter</b><br />
+            Visualizza gli ultimi tweet inviati.</div></li>
+            <li><img src="widgets/lastfm/icon.png"> <b>Last.fm</b><br />
+            Mostra gli ultimi ascolti su Last.fm.</li>
+            <li><img src="widgets/googlecalendar/icon.png"> <b>Google Calendar</b><br />
+            Mostra il contenuto di un calendario scelto.</li>
+            <li><img src="widgets/flickr/icon.png"> <b>Flickr</b><br />
+            Visualizza un elenco con le ultime foto pubblicate su Flickr.</li>
+        </ul>
         </div>
         <div id="editwidget">
             <p>Form per la modifica del widget selezionato</p>
         </div>
         <div id="trash_config">
-            <img id="trash" src="themes/default/img/trash.png" alt="" title="Drop a widget here to destroy it"/>
+            <!--<img id="trash" src="themes/default/img/trash.png" alt="" title="Drop a widget here to destroy it"/>-->
         </div>
         </div>
     <?php }else{?>

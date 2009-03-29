@@ -19,7 +19,7 @@ public function render(){
     $username=$this->loadarg("username");
     $html ="
         <h3 class=\"ui-widget-header\"><img src=\"widgets/twitter/icon.png\" /> Ultimi tweet di {$username}</h3>
-        <div id=\"twitter\"></div>
+        <div id='twitter'></div>
         ";
     return $html;
     }
@@ -37,7 +37,6 @@ public function jsfunctions(){
 		loaderText: 'Caricamento',
 		slideIn: false,
 		showHeading: false,
-
 		showProfileLink: false
         });
         ";

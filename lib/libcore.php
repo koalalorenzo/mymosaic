@@ -17,7 +17,7 @@ function get_file($posizione){
 
 function write_file($posizione,$valore){
 # Questa funzione permette di sovrascrivere del contenuto in un file.
-    if (is_writable($file) == false) {
+    if (is_writable($posizione) == false) {
         echo('Permessi inadeguati per scrivere sul file'); # Nel caso in cui è impossibile scrivere sul file :) Va bene ?
         return FALSE;
     }
