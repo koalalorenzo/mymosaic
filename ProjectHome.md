@@ -1,0 +1,2 @@
+myMosaic is a new CMS that allows you to easily create a personal page! Through myMosaic you can have a personal space where visitors can learn more about yourself and about other web services: through plugins myMosaic can communicate with other web apps! (Twitter, Wordpress, Tumblr, etc...)
+MyMosaic will create a new generation of customizable personal pages!
